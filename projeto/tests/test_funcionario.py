@@ -19,7 +19,7 @@ class TestFuncionario(unittest.TestCase):
     def test_funcionario_str(self):
         endereco = Endereco("Rua A", "123", "Apt 1", "12345-678", "Bahia")
         funcionario = FuncionarioTest("Carlos", "71999999999", "carlos@exemplo.com", endereco)
-        self.assertEqual(str(funcionario), "Nome: Carlos, Telefone: 71999999999, Email: carlos@exemplo.com, Endereço: Rua A, 123 Apt 1, Bahia - 12345-678")
+        self.assertEqual(str(funcionario), "Nome: Carlos, Telefone: 71999999999, Email: carlos@exemplo.com, Endereço: Rua A, 123, Apt 1, Bahia - 12345-678")
 
 if __name__ == '__main__':
     unittest.main()
