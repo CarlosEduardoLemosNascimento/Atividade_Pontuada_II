@@ -1,15 +1,25 @@
+import unittest
 from projeto.models.endereco import Endereco
-from projeto.models.engenheiro import Engenheiro
-from projeto.models.medico import Medico
+from projeto.models.funcionario import Funcionario
 
-def main():
-    endereco = Endereco("Rua A", "123", "Apt 1", "12345-678", "São Paulo")
+class FuncionarioTest(Funcionario):
+    # Implementa o método abstrato para teste
+    def salario_final(self):
+        return 0
 
-    engenheiro = Engenheiro("João", "11999999999", "joao@exemplo.com", endereco, "123456")
-    print(engenheiro)
+class TestFuncionario(unittest.TestCase):
+    def test_funcionario_creation(self):
+        endereco = Endereco("Rua A", "123", "Apt 1", "12345-678", "Bahia")
+        funcionario = FuncionarioTest("Carlos", "71999999999", "carlos@exemplo.com", endereco)
+        self.assertEqual(funcionario.nome, "Carlos")
+        self.assertEqual(funcionario.telefone, "71999999999")
+        self.assertEqual(funcionario.email, "carlos@exemplo.com")
+        self.assertEqual(funcionario.endereco, endereco)
 
-    medico = Medico("Maria", "11988888888", "maria@exemplo.com", endereco, "654321")
-    print(medico)
+    def test_funcionario_str(self):
+        endereco = Endereco("Rua A", "123", "Apt 1", "12345-678", "Bahia")
+        funcionario = FuncionarioTest("Carlos", "71999999999", "carlos@exemplo.com", endereco)
+        self.assertEqual(str(funcionario), "Nome: Carlos, Telefone: 71999999999, Email: carlos@exemplo.com, Endereço: Rua A, 123 Apt 1, Bahia - 12345-678")
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    unittest.main()
